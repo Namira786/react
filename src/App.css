@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+.form-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.alert-custom {
+  text-align: center;
+}
+/* src/App.css */
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+

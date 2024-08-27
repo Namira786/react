@@ -1,9 +1,8 @@
-// src/components/FormComponent.js
-
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import TextInput from './TextInput';
 import SubmitButton from './SubmitButton';
+import DropdownInput from './DropdownInput';
+import RadioButtonGroup from './RadioButtonGroup';
 import '../App.css';
 
 const FormComponent = ({ fields, onSubmit }) => {
@@ -25,17 +24,50 @@ const FormComponent = ({ fields, onSubmit }) => {
     <div className="form-container">
       <Form onSubmit={handleSubmit}>
         <h2 className="form-header">Dynamic Form</h2>
-        {fields.map((field, index) => (
-          <TextInput
-            key={index}
-            label={field.label}
-            type={field.type}
-            placeholder={field.placeholder}
-            value={formData[field.name]}
-            onChange={handleChange}
-            name={field.name}
-          />
-        ))}
+        {fields.map((field, index) => {
+          switch (field.type) {
+            case 'text':
+            case 'email':
+            case 'password':
+            case 'tel':
+              return (
+                <Form.Group key={index} controlId={field.name}>
+                  <Form.Label>{field.label}</Form.Label>
+                  <Form.Control
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    value={formData[field.name]}
+                    onChange={handleChange}
+                    name={field.name}
+                  />
+                </Form.Group>
+              );
+            case 'dropdown':
+              return (
+                <DropdownInput
+                  key={index}
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  options={field.options}
+                />
+              );
+            case 'radio':
+              return (
+                <RadioButtonGroup
+                  key={index}
+                  label={field.label}
+                  name={field.name}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  options={field.options}
+                />
+              );
+            default:
+              return null;
+          }
+        })}
         <SubmitButton label="Submit" />
       </Form>
     </div>
@@ -43,4 +75,3 @@ const FormComponent = ({ fields, onSubmit }) => {
 };
 
 export default FormComponent;
-

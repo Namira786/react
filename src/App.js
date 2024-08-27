@@ -1,4 +1,5 @@
 // src/App.js
+// src/App.js
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
@@ -10,7 +11,18 @@ function App() {
   const form1Fields = [
     { label: 'Name', type: 'text', placeholder: 'Enter your name', name: 'name' },
     { label: 'Email', type: 'email', placeholder: 'Enter your email', name: 'email' },
-    { label: 'Password', type: 'password', placeholder: 'Enter your password', name: 'password' },
+    { label: 'Gender', type: 'radio', name: 'gender', options: [
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+        { label: 'Other', value: 'other' },
+      ]
+    },
+    { label: 'Country', type: 'dropdown', name: 'country', options: [
+        { label: 'United States', value: 'us' },
+        { label: 'Canada', value: 'ca' },
+        { label: 'United Kingdom', value: 'uk' },
+      ]
+    },
   ];
 
   const form2Fields = [
@@ -19,6 +31,17 @@ function App() {
     { label: 'Email', type: 'email', placeholder: 'Enter your email', name: 'email' },
     { label: 'Password', type: 'password', placeholder: 'Enter your password', name: 'password' },
     { label: 'Phone Number', type: 'tel', placeholder: 'Enter your phone number', name: 'phoneNumber' },
+    { label: 'Subscription Plan', type: 'dropdown', name: 'plan', options: [
+        { label: 'Free', value: 'free' },
+        { label: 'Basic', value: 'basic' },
+        { label: 'Premium', value: 'premium' },
+      ]
+    },
+    { label: 'Newsletter', type: 'radio', name: 'newsletter', options: [
+        { label: 'Yes', value: 'yes' },
+        { label: 'No', value: 'no' },
+      ]
+    },
   ];
 
   const handleFormSubmit = (data) => {
